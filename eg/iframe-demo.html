@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/iframeResizer.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Iframe Demo</h1>
+    <p>This is before the content.</p>
+    <iframe src="/embed?html_only=1&url=http://www.youtube.com/watch?v=2fOzweu95oc" width="100%" frameborder="no" scrolling="no"></iframe>
+    <p>This is after.</p>
+    <script type="text/javascript" charset="utf-8">
+      $('iframe').iFrameResize();
+    </script>
+
+  </body>
+</html>

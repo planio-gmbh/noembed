@@ -133,7 +133,20 @@ sub download {
           $data->{html} = $self->{render}->("wrapper.html", $provider, $data);
         }
 
-        $req->respond(Noembed::Util::json_res $data);
+        if ($req->parameters->{html_only}) {
+          $data->{html} = $self->{render}->("iframe-wrapper.html", $provider, $data);
+          $req->respond([
+            200,
+            [
+              'Content-Type', 'text/html; charset=utf-8',
+              'Content-Length', length $data->{html}
+            ],
+            [$data->{html}]
+          ]);
+        } else {
+          $req->respond(Noembed::Util::json_res $data);
+        }
+
       });
     }
     else {

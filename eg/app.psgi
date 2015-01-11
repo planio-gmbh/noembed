@@ -32,9 +32,11 @@ builder {
 
   mount "/"      => Plack::App::File->new(file => "index.html")->to_app;
   mount "/demo"  => Plack::App::File->new(file => "demo.html")->to_app;
+  mount "/iframe-demo"  => Plack::App::File->new(file => "iframe-demo.html")->to_app;
   mount "/noembed.css" => sub { $noembed->css_response };
   mount "/favicon/" => Plack::App::File->new(root => Noembed::share_dir . "/icons/")->to_app;
   mount "/docs"  => Plack::App::File->new(root => "docs/")->to_app;
+  mount "/javascripts/" => Plack::App::File->new(root => Noembed::share_dir . "/javascripts/")->to_app;
 
   mount "/providers" => builder {
     enable $cors;
