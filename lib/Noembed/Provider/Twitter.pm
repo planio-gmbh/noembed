@@ -15,7 +15,7 @@ sub prepare_provider {
 }
 
 sub read_credentials {
-  my $file = Noembed::share_dir() . "/twitter_cred.json";
+  my $file = "$ENV{HOME}/.twitter_cred.json";
   local $/;
   open(my $fh, "<", $file)
     or die "can not read twitter credentials: $file";
@@ -33,7 +33,7 @@ sub oauth_url {
     nonce => Digest::SHA1::sha1_base64(time . $$ . rand),
     signature_method => 'HMAC-SHA1',
     request_url => $url,
-    request_method => "GET",  
+    request_method => "GET",
     extra_params => {include_entities => "true"},
     consumer_key => $cred->{consumer_key},
     consumer_secret => $cred->{consumer_secret},
