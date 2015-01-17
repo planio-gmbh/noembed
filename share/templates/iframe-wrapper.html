@@ -3,6 +3,9 @@
 <html>
   <head>
     <link href="/noembed.css" media="all" rel="stylesheet" type="text/css"/>
+? if ($data->{css_include}) {
+    <link href="https://support.plan.io<?= Noembed::Util::html($data->{css_include}) ?>" media="all" rel="stylesheet" type="text/css">
+? }
     <script src="/javascripts/iframeResizer.contentWindow.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body style="margin:0; padding:0;">

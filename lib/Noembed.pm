@@ -134,6 +134,7 @@ sub download {
         }
 
         if ($req->parameters->{html_only}) {
+          $data->{css_include} = $req->parameters->{css_include};
           $data->{html} = $self->{render}->("iframe-wrapper.html", $provider, $data);
           $req->respond([
             200,
