@@ -30,6 +30,17 @@ my $cors = sub {
 builder {
   enable ReverseProxy;
 
+  mount "/" => sub {
+    return [
+             301,
+             [
+               'Content-Type' => 'text/plain',
+               'Location' => 'https://plan.io/frequently-asked-questions/#item-280'
+             ],
+             ['redirecting']
+           ]
+  };
+
   mount "/noembed.css" => sub { $noembed->css_response };
   mount "/favicon/" => Plack::App::File->new(root => Noembed::share_dir . "/icons/")->to_app;
   mount "/javascripts/" => Plack::App::File->new(root => Noembed::share_dir . "/javascripts/")->to_app;
